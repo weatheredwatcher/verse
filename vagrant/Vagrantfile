@@ -1,0 +1,22 @@
+#projects/myproject/vagrant/Vagrantfile
+Vagrant::Config.run do |config|
+#we don't actually make this block we could easily move the contents up a level but i find this allows me to add more VM's which is handy for creating server stacks.
+  config.vm.define :web do |web_server|
+  #we need to let vagrant know which vm image to use
+    web_server.vm.box = "lucid32"
+    #or where we can go to acquire the vm image
+    web_server.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+    #configure nic adapter for the VM, alternatively you can use :bridged
+    web_server.vm.network :hostonly, "10.0.0.2"
+    #make sure nothing is using port 80 on your pc, or comment the line below out
+    web_server.vm.forward_port 80, 8888
+    #directories to share with the guest machine
+    web_server.vm.share_folder "v-web-app", "/home/vagrant/app", "../app"
+    #provisioning
+    web_server.vm.provision :chef_solo do |web_chef|
+      web_chef.cookbooks_path = "chef/cookbooks"
+      web_chef.roles_path = "chef/roles"
+      web_chef.add_role "server" #vagrant will look in "projects/myproject/vagrant/chef/roles/" for "server.rb"
+    end
+  end
+end
