@@ -3,9 +3,9 @@ Vagrant::Config.run do |config|
 #we don't actually make this block we could easily move the contents up a level but i find this allows me to add more VM's which is handy for creating server stacks.
   config.vm.define :web do |web_server|
   #we need to let vagrant know which vm image to use
-    web_server.vm.box = "lucid32"
+    web_server.vm.box = "verse"
     #or where we can go to acquire the vm image
-    web_server.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+    web_server.vm.box_url = "https://dl.dropboxusercontent.com/u/197673519/debian-7.2.0.box"
     #configure nic adapter for the VM, alternatively you can use :bridged
     web_server.vm.network :hostonly, "10.0.0.2"
     #make sure nothing is using port 80 on your pc, or comment the line below out
