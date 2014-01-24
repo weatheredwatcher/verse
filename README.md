@@ -2,6 +2,35 @@ Verse
 ===
 An open source Publishing System
 
+DEV Dependencies:
+
+1. Vagrant
+2. Virtual Box
+3. NodeJS
+4. Bower
+5. Grunt
+6. Less
+
+To install this application locally:
+
+    cd vagrant
+    vagrant up
+
+If you need to access the VM
+
+    vagrant ssh
+
+Make a mistake and need to startover?
+
+    vagrant destroy
+    vagrant up
+
+
+
+
+
+
+
 Oh Me! Oh Life!
 
 Oh me! O life! of the questions of these recurring,
