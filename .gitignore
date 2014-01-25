@@ -2,4 +2,5 @@
 .DS_Store
 .project
 .settings
+.settings/*
 node_modules
